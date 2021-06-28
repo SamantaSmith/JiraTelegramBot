@@ -10,21 +10,6 @@ public class JiratelegramApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JiratelegramApplication.class, args);
-
-		ApiContextInitializer.init();
-
-		JiraTelegramBot jiraTelegramBot = new JiraTelegramBot();
-		TelegramBotsApi botsApi = new TelegramBotsApi();
-
-		try {
-
-			botsApi.registerBot(jiraTelegramBot);
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-
-
 	}
 
 }

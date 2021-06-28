@@ -7,18 +7,22 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class JiraTelegramBot extends TelegramLongPollingBot {
 
-    public static final String TOKEN = "1805537410:AAF1OBqFPbpn4DtK-CoCTsm8gIQ5AEm_hPs";
-    public static final String USERNAME = "@jira_telega_bot";
+    private final String token;
+    private final String username;
 
+    public JiraTelegramBot(String token, String username) {
+        this.token = token;
+        this.username = username;
+    }
 
     @Override
     public String getBotUsername() {
-        return USERNAME;
+        return username;
     }
 
     @Override
     public String getBotToken() {
-        return TOKEN;
+        return token;
     }
 
     @Override

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="2" author="AlexIv">
+
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="login" type="varchar(255)">
+
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="3" author="AlexIv">
+        <createTable tableName="leaders">
+            <column name="id" type="bigint" autoIncrement="false">
+                
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="leaders" baseColumnNames="id" constraintName="fk_leaders_users" referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    
+    <changeSet id="4" author="AlexIv">
+        <createTable tableName="employees">
+            <column name="id" type="bigint" autoIncrement="false">
+
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="name" type="varchar(255)">
+
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="jira_login" type="varchar(255)">
+
+                <constraints nullable="false"/>
+            </column>
+        
+        </createTable>
+        
+        <addForeignKeyConstraint baseTableName="employees" baseColumnNames="id" constraintName="fk_employees_users" referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5" author="AlexIv">
+        <createTable tableName="teams">
+
+            <column name="id" type="bigint" autoIncrement="true">
+
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="name" type="varchar(255)">
+
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="teams" baseColumnNames="id" constraintName="fk_teams_leaders" referencedTableName="leaders"
+                                 referencedColumnNames="id"/>
+
+
+
+    </changeSet>
+
+    <changeSet id="6" author="AlexIv">
+        <createTable tableName="team-employee">
+            <column name="team_id" type="bigint" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_id" type="bigint" autoIncrement="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="team-employee" baseColumnNames="team_id"
+                                 constraintName="fk_team-employee_teams"
+                                 referencedTableName="teams"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="team-employee" baseColumnNames="employee_id"
+                                 constraintName="fk_team-employee_employees"
+                                 referencedTableName="employees"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+
+</databaseChangeLog>
