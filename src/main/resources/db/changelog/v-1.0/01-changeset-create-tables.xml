@@ -67,9 +67,14 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="leader_id" type="bigint">
+
+
+            </column>
+
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="teams" baseColumnNames="id" constraintName="fk_teams_leaders" referencedTableName="leaders"
+        <addForeignKeyConstraint baseTableName="teams" baseColumnNames="leader_id" constraintName="fk_teams_leaders" referencedTableName="leaders"
                                  referencedColumnNames="id"/>
 
 

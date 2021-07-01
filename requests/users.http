@@ -1,0 +1,17 @@
+GET http://localhost:8080/api/users/
+Accept: application/json;charset=UTF-8
+
+<> 2021-06-28T063905.200.json
+
+###
+### получения пользователя по идентификатору
+GET http://localhost:8080/api/users/1
+
+###
+### создание пользователя
+POST http://localhost:8080/api/users/
+Content-Type: application/json
+
+{
+  "login": "men5"
+}

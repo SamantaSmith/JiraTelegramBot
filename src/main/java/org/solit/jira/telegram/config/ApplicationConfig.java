@@ -1,6 +1,6 @@
-package com.example.jiratelegram.config;
+package org.solit.jira.telegram.config;
 
-import com.example.jiratelegram.JiraTelegramBot;
+import org.solit.jira.telegram.JiraTelegramBot;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
