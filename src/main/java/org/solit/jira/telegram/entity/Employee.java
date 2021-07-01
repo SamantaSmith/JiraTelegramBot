@@ -1,8 +1,10 @@
 package org.solit.jira.telegram.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table (name = "employees")
@@ -11,6 +13,19 @@ public class Employee extends User {
 
     private String name;
     private String jira_login;
+
+    @ManyToMany(mappedBy = "employees")
+    private Set<Team> teams;
+
+    public void addTeam(Team team) {
+
+        teams.add(team);
+    }
+
+    public void removeTeam(Team team) {
+
+        teams.remove(team);
+    }
 
     public String getName() {
         return name;

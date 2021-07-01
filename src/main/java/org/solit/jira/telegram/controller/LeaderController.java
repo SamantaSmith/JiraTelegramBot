@@ -38,6 +38,7 @@ public class LeaderController {
     }
 
     @PostMapping("/{leaderId}/teams/{teamId}/add")
+    @org.springframework.transaction.annotation.Transactional
     public Leader addTeam(@PathVariable Long leaderId, @PathVariable Long teamId) {
 
         Leader leader = service.addTeam(leaderId, teamId);
@@ -45,6 +46,7 @@ public class LeaderController {
     }
 
     @DeleteMapping("/{leaderId}/teams/{teamId}/add")
+    @org.springframework.transaction.annotation.Transactional
     public Leader removeTeam(@PathVariable Long leaderId, @PathVariable Long teamId) {
 
         Leader leader = service.removeTeam(leaderId, teamId);

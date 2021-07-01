@@ -6,6 +6,7 @@ import org.solit.jira.telegram.service_impl.TeamServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,5 +35,19 @@ public class TeamController {
     @DeleteMapping("/{id}")
     public Long deleteTeam(@PathVariable Long id) {
         return service.deleteTeam(id);
+    }
+
+    @PostMapping("/{teamId}/employees/{employeeId}/add")
+    @Transactional
+    public Team addEmployee(@PathVariable Long teamId, @PathVariable Long employeeId) {
+        Team team = service.addEmployee(teamId, employeeId);
+        return team;
+    }
+
+    @DeleteMapping("/{teamId}/employees/{employeeId}/add")
+    @Transactional
+    public Team removeEmployee(@PathVariable Long teamId, @PathVariable Long employeeId) {
+        Team team = service.removeEmployee(teamId, employeeId);
+        return team;
     }
 }

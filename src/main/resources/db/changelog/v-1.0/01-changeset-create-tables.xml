@@ -82,7 +82,7 @@
     </changeSet>
 
     <changeSet id="6" author="AlexIv">
-        <createTable tableName="team-employee">
+        <createTable tableName="team_employee">
             <column name="team_id" type="bigint" autoIncrement="false">
                 <constraints nullable="false"/>
             </column>
@@ -91,13 +91,13 @@
             </column>
         </createTable>
 
-        <addForeignKeyConstraint baseTableName="team-employee" baseColumnNames="team_id"
-                                 constraintName="fk_team-employee_teams"
+        <addForeignKeyConstraint baseTableName="team_employee" baseColumnNames="team_id"
+                                 constraintName="fk_team_employee_teams"
                                  referencedTableName="teams"
                                  referencedColumnNames="id"/>
 
-        <addForeignKeyConstraint baseTableName="team-employee" baseColumnNames="employee_id"
-                                 constraintName="fk_team-employee_employees"
+        <addForeignKeyConstraint baseTableName="team_employee" baseColumnNames="employee_id"
+                                 constraintName="fk_team_employee_employees"
                                  referencedTableName="employees"
                                  referencedColumnNames="id"/>
 

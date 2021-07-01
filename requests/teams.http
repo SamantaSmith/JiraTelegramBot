@@ -5,11 +5,15 @@ POST http://localhost:8080/api/teams/
 Content-Type: application/json
 
 {
-  "name": "teamSuperskaya"
+  "name": "teamB"
 }
 
 ###
-###
+###Получение списка команд
 GET http://localhost:8080/api/teams/
+
+###
+###Добавление работника в команду
+POST http://localhost:8080/api/teams/5/employees/3/add
 
 

@@ -3,6 +3,7 @@ package org.solit.jira.telegram.service_impl;
 import org.solit.jira.telegram.entity.Employee;
 import org.solit.jira.telegram.entity.Team;
 import org.solit.jira.telegram.repository.TeamRepository;
+import org.solit.jira.telegram.service.EmployeeService;
 import org.solit.jira.telegram.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class TeamServiceImpl implements TeamService {
     @Autowired
     private TeamRepository repository;
 
+    @Autowired
+    private EmployeeService service;
 
     @Override
     public Team saveTeam(Team team) {
@@ -46,5 +49,23 @@ public class TeamServiceImpl implements TeamService {
         currentTeam.setName(team.getName());
 
         return currentTeam;
+    }
+
+    public Team addEmployee(Long teamId, Long employeeId) {
+
+        Team team = getTeam(teamId);
+        Employee employee = service.getEmployeeById(employeeId);
+        team.addEmployee(employee);
+        employee.addTeam(team);
+        return team;
+    }
+
+    public Team removeEmployee(Long teamId, Long employeeId) {
+
+        Team team = getTeam(teamId);
+        Employee employee = service.getEmployeeById(employeeId);
+        team.removeEmployee(employee);
+        employee.removeTeam(team);
+        return team;
     }
 }

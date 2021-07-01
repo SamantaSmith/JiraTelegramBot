@@ -1,11 +1,8 @@
 package org.solit.jira.telegram.entity;
 
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table (name = "teams")
@@ -18,6 +15,21 @@ public class Team {
     private String name;
 
     public Team() {
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "team_employee", joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
+    Set<Employee> employees;
+
+    public void addEmployee(Employee employee) {
+
+        employees.add(employee);
+    }
+
+    public void removeEmployee(Employee employee) {
+
+        employees.remove(employee);
     }
 
     public Team(String name) {
