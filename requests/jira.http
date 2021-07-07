@@ -37,3 +37,39 @@ Content-Type: application/json
     }
   ]
 }
+
+### Получение информации о списаниях
+POST http://185.244.173.31:3111/api/report
+Content-Type: application/json
+
+{
+  "from": "2021-06-28",
+  "to": "2021-06-29",
+  "groups": [
+    {
+      "id": "ff3a3794-2ae2-45de-80ad-5fd77aebf817",
+      "members": [
+        {
+          "user": {
+            "id": "8ef5522a-b9b7-44e8-8760-58f7d951cbe3",
+            "logins": [
+              {
+                "login": "assmirnov",
+                "stand": "ЕМИАС"
+              },
+              {
+                "login": "asmirnov",
+                "stand": "SC"
+              }
+            ],
+            "sendNotification": false
+          },
+          "start": "2020-01-01T00:00:00.000+0300",
+          "end": null,
+          "groupId": "ff3a3794-2ae2-45de-80ad-5fd77aebf817"
+        }
+      ],
+      "visible": true
+    }
+  ]
+}

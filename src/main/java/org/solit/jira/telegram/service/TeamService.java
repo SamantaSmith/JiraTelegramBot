@@ -17,4 +17,10 @@ public interface TeamService {
     //Добавить оставшиеся методы
 
     Team editTeam(Long id, Team team);
+
+    Team addEmployee(Long teamId, Long employeeId);
+
+    Team removeEmployee(Long teamId, Long employeeId);
+
+    Team getTeamByName(String name);
 }

@@ -35,6 +35,17 @@ public class LeaderServiceImpl implements LeaderService {
         return (id);
     }
 
+    @org.springframework.transaction.annotation.Transactional
+    public Leader updateLeader(Leader leader) {
+        Leader currentLeader = repository.findById(leader.getId()).orElse(null);
+        if (currentLeader == null) {
+            throw new IllegalArgumentException("Пользователь не найден: " + leader.getId());
+        }
+        currentLeader.setLogin(leader.getLogin());
+        return repository.save(currentLeader);
+    }
+
+    @org.springframework.transaction.annotation.Transactional
     public Leader addTeam(Long leaderId, long teamId) {
         Leader leader = getLeaderById(leaderId);
         Team team = teamService.getTeam(teamId);

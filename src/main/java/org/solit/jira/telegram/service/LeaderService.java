@@ -15,4 +15,12 @@ public interface LeaderService {
 
     Long deleteLeader(Long id);
 
+    Leader updateLeader(Leader leader);
+
+    Leader addTeam(Long leaderId, long teamId);
+
+    Leader removeTeam(Long leaderId, long teamId);
+
+    List<Team> showTeamsByLeaderId(Long id);
+
 }

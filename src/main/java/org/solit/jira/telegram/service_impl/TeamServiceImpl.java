@@ -35,6 +35,18 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public Team getTeamByName(String name) {
+
+        List<Team> teams = repository.findAll();
+        for (Team t : teams) {
+            if (t.getName().equals(name)) {
+                return t;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Long deleteTeam(Long id) {
         repository.deleteById(id);
         return id;
@@ -51,6 +63,7 @@ public class TeamServiceImpl implements TeamService {
         return currentTeam;
     }
 
+    @Override
     public Team addEmployee(Long teamId, Long employeeId) {
 
         Team team = getTeam(teamId);
@@ -60,6 +73,7 @@ public class TeamServiceImpl implements TeamService {
         return team;
     }
 
+    @Override
     public Team removeEmployee(Long teamId, Long employeeId) {
 
         Team team = getTeam(teamId);

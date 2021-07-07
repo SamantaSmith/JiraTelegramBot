@@ -10,7 +10,7 @@ public class Leader extends User {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "leader_id")
     private List<Team> teams;
 
